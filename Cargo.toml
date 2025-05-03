@@ -1,0 +1,17 @@
+[package]
+name = "jstd"
+version = "0.0.1"
+edition = "2024"
+
+[dependencies]
+anyhow = "1"
+colog = "1"
+clap = { version = "4", features = ["derive"] }
+log = "0.4"
+rand = "0.9"
+rayon = "1"
+serde = { version = "1", features = ["derive"] }
+serde_derive = "1"
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+walkdir = "2"
