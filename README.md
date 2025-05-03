@@ -30,6 +30,8 @@ async fn main() -> Result<()> {
 ```
 I couldn't find a way to re-export the `Deserialize`/`Serialize` proc macros through this crate, so `serde` must still be explicitly depended on in consumers.
 
+## Bootstrap macros
+
 ### `init_log!`
 With no parameters, initializes [`colog`](https://docs.rs/colog/latest/colog/) at the default [`LogLevel::Info`](https://docs.rs/log/latest/log/enum.Level.html) for release builds, and [`LogLevel::Trace`](https://docs.rs/log/latest/log/enum.Level.html) for debug builds (by proxy via `cfg!(debug_assertions)`). An optional `$filter_module:expr` string expression can be passed, which will forward the argument to [`env_logger::Builder::filter_module`](https://docs.rs/env_logger/latest/env_logger/struct.Builder.html#method.filter_module); this is useful if any additional dependencies left in logs at the [`Trace`](https://docs.rs/log/latest/log/enum.Level.html) level.
 
@@ -53,3 +55,7 @@ Outputs:
 ```
 
 Benchmarking is disabled for release builds (by proxy via `cfg!(debug_assertions)`), and the first parameter, `$msg:expr`, is lazily evaluated in a closure to avoid eager evaluation when benchmarking is disabled.
+
+## Binary size
+
+Building `main.rs` above using `rustc 1.86.0 (05f9846f8 2025-03-31)` on Windows produces a 2,814.5 KiB debug executable, and a 2,154.5 KiB release executable.
