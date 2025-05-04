@@ -9,7 +9,7 @@ pub mod prelude {
     pub use rand::{self, prelude::*};
     pub use rayon::{self, prelude::*, iter::{IntoParallelIterator, ParallelIterator}};
     pub use tokio;
-    pub use walkdir::WalkDir;
+    pub use walkdir::{self, WalkDir};
 }
 
 #[macro_export]
