@@ -7,7 +7,7 @@ pub mod prelude {
     pub use colog;
     pub use log::{self, error, warn, info, debug, trace};
     pub use rand::{self, prelude::*};
-    pub use rayon::prelude::*;
+    pub use rayon::{self, prelude::*, iter::{IntoParallelIterator, ParallelIterator}};
     pub use tokio;
     pub use walkdir::WalkDir;
 }
